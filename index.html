@@ -19,4 +19,52 @@
     <div id="game"></div>
     <script src="script.js"></script>
 </body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Battle Rush</title>
+    <style>
+        #game {
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            position: relative;
+        }
+        #target {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game"></div>
+    
+    <script>
+        // Game Elements
+        const game = document.getElementById("game");
+        let score = 0;
+        
+        // Create Target
+        game.innerHTML = `
+            <div id="target"></div>
+            <p style="text-align:center">Score: <span id="score">0</span></p>
+        `;
+        
+        // Game Logic
+        document.getElementById("target").addEventListener("click", function() {
+            score++;
+            document.getElementById("score").textContent = score;
+            this.style.left = Math.random() * 350 + "px";
+            this.style.top = Math.random() * 350 + "px";
+        });
+        
+        // Initial Position
+        document.getElementById("target").style.left = "100px";
+        document.getElementById("target").style.top = "100px";
+    </script>
+</body>
 </html>
